@@ -2,8 +2,8 @@ const express = require("express")
 const app = express()
 
 const user = {
-  name: "Nazmul Hasan",
-  age: 27,
+  name: "Hasan",
+  age: 17,
 }
 
 app.get("/home", (req, res) => {
