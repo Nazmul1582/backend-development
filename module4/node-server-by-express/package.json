@@ -1,0 +1,15 @@
+{
+  "name": "server-by-express",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "Md. Nazmul Hasan",
+  "license": "ISC",
+  "description": "A simple node server using express js",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
