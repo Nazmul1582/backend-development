@@ -25,3 +25,9 @@ Create a Node.js server using Express.js and implement GET APIs to understand th
 ### Microservice Concept
 
 Make GET requests from one backend server to another backend server to understand microservice architecture. Also call APIs from Thunder Client, Postman, and browsers for comprehensive testing.
+
+## 4.1.7: Backend service as Client [Calling backend from other Backend]
+
+## FAST API vs Express JS : How they are almost same?
+
+Created a Python server using FastAPI and handle the get request with route parameters and query parameters
