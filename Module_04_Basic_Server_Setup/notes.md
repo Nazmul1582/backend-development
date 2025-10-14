@@ -17,7 +17,11 @@ Create a Node.js server using Express.js and implement GET APIs to understand th
 
 #### ❓ Query Parameters
 
-- **Definition:** Key-value pairs appended after `?` in URL
+- **Definition:** Key-value pairs appended after `?` in the URL
 - **Syntax:** `/search?category=books&price=50`
 - **Use Case:** Filtering, sorting, pagination, optional parameters
 - **Access:** `req.query.parameterName`
+
+### Microservice Concept
+
+Make GET requests from one backend server to another backend server to understand microservice architecture. Also call APIs from Thunder Client, Postman, and browsers for comprehensive testing.
