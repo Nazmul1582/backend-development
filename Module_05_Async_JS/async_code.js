@@ -1,6 +1,6 @@
 setTimeout(() => {
   console.log("showing from setTimeout")
-})
+}, 1000)
 let count = 1
 do {
   console.log(count)
