@@ -5,7 +5,7 @@ let inventory = {}
 setTimeout(() => {
   console.log("5 pices mango purchased successfully!")
   inventory = { mango: 5 }
-})
+}, 1000)
 console.log(inventory)
 
 // Output:
