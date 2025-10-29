@@ -15,12 +15,34 @@ router.get("/user/:id", (req, res) => {
 })
 
 router.post("/user/create", (req, res) => {
-  const user = new User(req.body)
-  if (!user.name) {
-    res.status(400).send({
-      message: "Name is required!",
+  const { name, age, address } = req.body
+
+  if (!name || !age || !address) {
+    return res.status(400).send({
+      message:
+        "You have to provide all data (name, age, address) to create a user",
     })
   }
+
+  if (typeof name !== "string" || name.length < 3 || name.length > 100) {
+    return res.status(400).json({
+      message: "Name must be a string and between 3 to 100 character",
+    })
+  }
+
+  if (typeof age !== "number" || age < 0) {
+    return res.status(400).json({
+      message: "Age must be a positive number",
+    })
+  }
+
+  if (typeof address !== "string" || address.length <= 5) {
+    return res.status(400).json({
+      message: "Address must be characters and more then 5 characters",
+    })
+  }
+
+  const user = new User(req.body)
   res.status(201).json({
     message: "User created successfully",
     user,
