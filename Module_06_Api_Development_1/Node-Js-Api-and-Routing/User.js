@@ -1,4 +1,5 @@
 const express = require("express")
+const Joi = require("joi")
 const router = express.Router()
 
 // Data Modeling
@@ -45,6 +46,27 @@ router.post("/user/create", (req, res) => {
   const user = new User(req.body)
   res.status(201).json({
     message: "User created successfully",
+    user,
+  })
+})
+
+// user creation with validation using JOI
+const userSchema = Joi.object({
+  name: Joi.string().min(3).max(100).required(),
+  age: Joi.number().positive().required(),
+  address: Joi.string().min(5).required(),
+})
+router.post("/user/create/v2", (req, res) => {
+  const { error } = userSchema.validate(req.body)
+  if (error) {
+    return res.status(400).json({
+      message: error.details[0].message,
+    })
+  }
+
+  const user = new User(req.body)
+  res.status(201).json({
+    message: "User created successfully!",
     user,
   })
 })
