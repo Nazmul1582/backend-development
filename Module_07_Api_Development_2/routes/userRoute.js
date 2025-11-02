@@ -1,21 +1,13 @@
 const express = require("express")
 const router = express.Router()
+const {
+  getAllUsers,
+  updateUser,
+  deleteUser,
+} = require("../controllers/userController")
 
-const users = [
-  {
-    id: 1,
-    name: "Nazmul",
-  },
-  {
-    id: 2,
-    name: "Hasan",
-  },
-]
-
-router.get("/", (req, res) => {
-  res.status(200).json({
-    users,
-  })
-})
+router.get("/", getAllUsers)
+router.get("/update", updateUser)
+router.get("/delete", deleteUser)
 
 module.exports = router
