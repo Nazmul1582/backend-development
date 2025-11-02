@@ -5,10 +5,9 @@ const {
   updateUser,
   deleteUser,
 } = require("../controllers/userController")
-const { isValidUser, checkUserAgent } = require("../middleware/user")
 
-router.get("/", isValidUser, checkUserAgent, getAllUsers)
-router.get("/update", isValidUser, updateUser)
-router.get("/delete", isValidUser, deleteUser)
+router.get("/", getAllUsers)
+router.get("/update", updateUser)
+router.get("/delete", deleteUser)
 
 module.exports = router
