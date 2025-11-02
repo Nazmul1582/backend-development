@@ -1,3 +1,5 @@
+const saveUserAgent = require("../utils/logger")
+
 const isValidUser = (req, res, next) => {
   const token = req.query.token
   if (token !== "123") {
@@ -10,7 +12,8 @@ const isValidUser = (req, res, next) => {
 
 const checkUserAgent = (req, res, next) => {
   const userAgent = req.headers["user-agent"]
-  console.log(`The agent is ${userAgent}`)
+  // save to json file
+  saveUserAgent(userAgent)
   if (!userAgent) {
     res.status(400).json({
       message: "Bad request: Missing User-Agent header",
