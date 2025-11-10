@@ -5,8 +5,10 @@ const port = process.env.PORT || 3000
 
 const userRoute = require("./routes/userRoute")
 const { checkUserAgent, isValidUser } = require("./middleware/user")
+const auditLogger = require("./middleware/audit/auditLogger")
 
 app.use(express.json())
+app.use(auditLogger)
 app.use(checkUserAgent)
 
 const rateLimiter = rateLimit({
