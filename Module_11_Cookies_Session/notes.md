@@ -19,3 +19,7 @@ HTTP (Hypertext Transfer Protocol) is the fundamental language/protocol of the W
 ### Cookies
 
 The Cookie is a small message from a web server passed to the user's browser when you visit a website. In other words, Cookies are small text files of information created/updated when visiting a website and stored on the user's web browser.
+
+## 11.1.2 Understanding Cookies: How to make and save them
+
+**Set Cookies:** `res.cookie(key: value, {httpOnly: true})`
