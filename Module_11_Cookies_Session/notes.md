@@ -15,3 +15,7 @@ HTTP (Hypertext Transfer Protocol) is the fundamental language/protocol of the W
 - **Methods:** Actions like GET (fetch), POST (send data), PUT (update), DELETE (remove) define intent.
 - **Security (HTTPS):** A secure, encrypted version (HTTP Secure) uses SSL/TLS to protect data, now standard for most sites (using port 443 instead of 80).
 - **Evolution:** HTTP has evolved (HTTP/2, HTTP/3) for better performance, security, and efficiency.
+
+### Cookies
+
+The Cookie is a small message from a web server passed to the user's browser when you visit a website. In other words, Cookies are small text files of information created/updated when visiting a website and stored on the user's web browser.
