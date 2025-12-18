@@ -3,20 +3,14 @@ const cookieParser = require("cookie-parser")
 const app = express()
 
 app.use(cookieParser())
+app.use(express.json())
 
-app.get("/set-cookie", (req, res) => {
-  res.cookie("name", "nazmul", { httpOnly: true })
-  res.send("Cookie has been set successfully!")
-})
-
-app.get("/get-cookie", (req, res) => {
-  const name = req.cookies.name
-
-  if (name === "nazmul") {
-    res.send(`Cookie received: ${name}`)
-  } else {
-    res.send("Unauthorized!")
-  }
+app.post("/login", (req, res) => {
+  const { username } = req.body
+  // res.cookie("username", username, { maxAge: 60000, httpOnly: true })
+  res.setHeader("Set-Cookie", `username=${username}; HttpOnly; Max-Age=60`)
+  // Simulate login functionality
+  res.send("Cookie is set")
 })
 
 app.listen(3000, () => {
