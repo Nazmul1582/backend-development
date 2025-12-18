@@ -13,6 +13,15 @@ app.post("/login", (req, res) => {
   res.send("Cookie is set")
 })
 
+app.get("/protected", (req, res) => {
+  const { username } = req.cookies
+  if (username !== "nazmul") res.status(401).send("Unauthorized!")
+  else
+    res
+      .status(200)
+      .send(`Welcome ${username}! You have access to this protected route`)
+})
+
 app.listen(3000, () => {
   console.log("Server is running...")
 })

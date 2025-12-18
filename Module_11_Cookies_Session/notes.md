@@ -22,5 +22,36 @@ The Cookie is a small message from a web server passed to the user's browser whe
 
 ## 11.1.2 Understanding Cookies: How to make and save them
 
-**Set Cookie:** `res.cookie(key: value, {httpOnly: true})`
-**Get Cookie:** `req.cookies` using cookie-parser
+- **Set Cookie:** `res.cookie(key: value, {httpOnly: true})`
+- **Get Cookie:** `req.cookies` using cookie-parser
+
+```js
+// set cookies
+res.setHeader("Set-Cookie", `username=${username}; HttpOnly; Max-Age=60`)
+// OR
+res.cookie("username", username, { httpOnly: true, maxAge: 60000 })
+
+// get cookies
+req.cookies // using cookie-parser
+```
+
+## 11.1.3 Simple login and protected route using Cookie
+
+```js
+app.post("/login", (req, res) => {
+  const { username } = req.body
+  // res.cookie("username", username, { maxAge: 60000, httpOnly: true })
+  res.setHeader("Set-Cookie", `username=${username}; HttpOnly; Max-Age=60`)
+  // Simulate login functionality
+  res.send("Cookie is set")
+})
+
+app.get("/protected", (req, res) => {
+  const { username } = req.cookies
+  if (username !== "nazmul") res.status(401).send("Unauthorized!")
+  else
+    res
+      .status(200)
+      .send(`Welcome ${username}! You have access to this protected route`)
+})
+```
