@@ -22,4 +22,5 @@ The Cookie is a small message from a web server passed to the user's browser whe
 
 ## 11.1.2 Understanding Cookies: How to make and save them
 
-**Set Cookies:** `res.cookie(key: value, {httpOnly: true})`
+**Set Cookie:** `res.cookie(key: value, {httpOnly: true})`
+**Get Cookie:** `req.cookies` using cookie-parser
