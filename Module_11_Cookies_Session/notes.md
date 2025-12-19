@@ -57,3 +57,13 @@ app.get("/protected", (req, res) => {
 ```
 
 ## 11.1.4 Implementing Session with Cookies : Custom Session Storage
+
+## 11.1.5 Using third party library for Session storage and Cookie
+
+### 🧠 Session কী?
+
+Session হলো server-side storage, যেখানে user-এর data server-এ রাখা হয়।
+Browser শুধু একটা session ID cookie হিসেবে রাখে।
+
+- 👉 Session data = Server
+- 👉 Session ID = Cookie

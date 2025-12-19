@@ -1,30 +1,43 @@
 const express = require("express")
 const cookieParser = require("cookie-parser")
+const session = require("express-session")
 const app = express()
 
 app.use(cookieParser())
 app.use(express.json())
+app.use(
+  session({
+    secret: "signature",
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 900000, httpOnly: true },
+  })
+)
 
 const localStorage = {}
 
 app.post("/login", (req, res) => {
   const { username } = req.body
-  // res.setHeader("Set-Cookie", `username=${username}; HttpOnly; Max-Age=60`)
-  res.cookie("username", username, { maxAge: 60000, httpOnly: true })
-  localStorage[username] = { loggedIn: true }
+  if (!username) return res.status(400).send("Username required")
+  req.session.name = username
+  req.session.loggedIn = true
 
   // Simulate login functionality
   res.send("Cookie is set")
 })
 
 app.get("/protected", (req, res) => {
-  const { username } = req.cookies
+  const { name, loggedIn } = req.session
 
-  if (localStorage[username] && localStorage[username].loggedIn)
+  if (name && loggedIn)
     res
       .status(200)
-      .send(`Welcome ${username}! You have access to this protected route`)
+      .send(`Welcome ${name}! You have access to this protected route`)
   else res.status(401).send("Unauthorized!")
+})
+
+app.get("/logout", (req, res) => {
+  req.session.destroy(() => res.send("Logged Out"))
 })
 
 app.listen(3000, () => {
