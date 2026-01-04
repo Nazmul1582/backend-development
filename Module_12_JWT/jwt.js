@@ -20,6 +20,24 @@ app.post("/signin", (req, res) => {
   }
 })
 
+app.get("/protected", (req, res) => {
+  const token = req.headers.authorization?.split(" ")[1]
+
+  if (!token) {
+    return res.status(401).json({ message: "No token provided" })
+  }
+
+  jwt.verify(token, JWT_SECRET, (error, decoded) => {
+    if (error) {
+      return res.status(401).json({ message: "Invalid token" })
+    }
+    console.log("decoded: ", decoded)
+    res.status(200).json({
+      message: `Hello ${decoded.username}, you have access to this protected route!`,
+    })
+  })
+})
+
 app.listen(PORT, () => {
-  console.log("Server is running on http://localhost:3000")
+  console.log(`Server is running on http://localhost:${PORT}`)
 })
